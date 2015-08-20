@@ -1,1 +1,1 @@
-node[:mongodb][:cluster_name]="myReplicaSet"
+node.default[:mongodb][:cluster_name]="myReplicaSet"
