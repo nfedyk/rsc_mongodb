@@ -16,5 +16,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-include 'mongodb::10gen_repo'
-include 'mongodb:default'
+include_recipe 'mongodb::10gen_repo'
+include_recipe 'mongodb:default'
