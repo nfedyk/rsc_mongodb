@@ -10,3 +10,28 @@ version          '0.1.0'
 depends 'mongodb'
 
 recipe 'rsc_mongodb::default', 'Installs mongodb'
+
+
+#node['mongodb']['config']['replSet']
+#node[:mongodb][:cluster_name]
+
+#Set to true to make node an arbiter.
+#node[:mongodb][:replica_arbiter_only]
+
+#Set to false to omit index creation.
+#node[:mongodb][:replica_build_indexes]
+
+#Set to true to hide node from replicaset.
+#node[:mongodb][:replica_hidden]
+
+#Number of seconds to delay slave replication.
+#node[:mongodb][:replica_slave_delay] - Number of seconds to delay slave replication.
+
+#Node priority.
+#node[:mongodb][:replica_priority]
+
+#Node tags.
+#node[:mongodb][:replica_tags]
+
+#Number of votes node will cast in an election.
+#node[:mongodb][:replica_votes]
