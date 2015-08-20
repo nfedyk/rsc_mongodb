@@ -1,1 +1,1 @@
-node[:mongodb][:cluster_name]="rightscale"
+node[:mongodb][:cluster_name]="myReplicaSet"
