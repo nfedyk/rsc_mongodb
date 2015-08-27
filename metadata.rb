@@ -6,32 +6,30 @@ description      'Installs/Configures Mongo DB'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.0'
 
-
+depends 'build-essential'
 depends 'mongodb'
 
 recipe 'rsc_mongodb::default', 'Installs mongodb'
+# node['mongodb']['config']['replSet']
+# node[:mongodb][:cluster_name]
 
+# Set to true to make node an arbiter.
+# node[:mongodb][:replica_arbiter_only]
 
-#node['mongodb']['config']['replSet']
-#node[:mongodb][:cluster_name]
+# Set to false to omit index creation.
+# node[:mongodb][:replica_build_indexes]
 
-#Set to true to make node an arbiter.
-#node[:mongodb][:replica_arbiter_only]
+# Set to true to hide node from replicaset.
+# node[:mongodb][:replica_hidden]
 
-#Set to false to omit index creation.
-#node[:mongodb][:replica_build_indexes]
+# Number of seconds to delay slave replication.
+# node[:mongodb][:replica_slave_delay] - Number of seconds to delay slave replication.
 
-#Set to true to hide node from replicaset.
-#node[:mongodb][:replica_hidden]
+# Node priority.
+# node[:mongodb][:replica_priority]
 
-#Number of seconds to delay slave replication.
-#node[:mongodb][:replica_slave_delay] - Number of seconds to delay slave replication.
+# Node tags.
+# node[:mongodb][:replica_tags]
 
-#Node priority.
-#node[:mongodb][:replica_priority]
-
-#Node tags.
-#node[:mongodb][:replica_tags]
-
-#Number of votes node will cast in an election.
-#node[:mongodb][:replica_votes]
+# Number of votes node will cast in an election.
+# node[:mongodb][:replica_votes]

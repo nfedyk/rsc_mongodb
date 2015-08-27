@@ -16,5 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-include_recipe "mongodb::10gen_repo"
-include_recipe "mongodb::replicaset"
+node.default['build-essential']['compile_time'] = true
+include_recipe 'build-essential::default'
+include_recipe 'mongodb::mongodb_org_repo'
+include_recipe 'mongodb::replicaset'
