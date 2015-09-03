@@ -8,8 +8,10 @@ version          '0.1.0'
 
 depends 'build-essential'
 depends 'mongodb'
+depends 'machine_tag'
 
 recipe 'rsc_mongodb::default', 'Installs mongodb'
+recipe 'rsc_mongodb::replicaset', 'configures nodes into a replicaset'
 
 attribute "rsc_mongodb/config/replSet",
    :display_name => "MongoDB ReplicaSet Name",
@@ -21,6 +23,12 @@ attribute "rsc_mongodb/config/replSet",
 
 # Set to true to make node an arbiter.
 # node[:mongodb][:replica_arbiter_only]
+attribute "rsc_mongodb/config/replica_arbiter_only",
+   :display_name => "Arbiter Only",
+   :description => "Set to true to make node an arbiter",
+   :required => "optional",
+   :recipes => ["rsc_mongodb::default"]
+
 
 # Set to false to omit index creation.
 # node[:mongodb][:replica_build_indexes]
