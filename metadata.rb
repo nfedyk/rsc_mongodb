@@ -10,7 +10,13 @@ depends 'build-essential'
 depends 'mongodb'
 
 recipe 'rsc_mongodb::default', 'Installs mongodb'
-# node['mongodb']['config']['replSet']
+
+attribute "rsc_mongodb/config/replSet",
+   :display_name => "City Name",
+   :description => "The city where I currently live.",
+   :required => "required",
+   :recipes => ["rsc_mongodb::default"]
+
 # node[:mongodb][:cluster_name]
 
 # Set to true to make node an arbiter.
