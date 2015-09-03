@@ -12,8 +12,8 @@ depends 'mongodb'
 recipe 'rsc_mongodb::default', 'Installs mongodb'
 
 attribute "rsc_mongodb/config/replSet",
-   :display_name => "City Name",
-   :description => "The city where I currently live.",
+   :display_name => "MongoDB ReplicaSet Name",
+   :description => "The replicaset name to use for the mongodb replica",
    :required => "required",
    :recipes => ["rsc_mongodb::default"]
 
