@@ -7,6 +7,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.0'
 
 depends 'build-essential'
+depends 'chef-solo-search'
 depends 'mongodb'
 depends 'machine_tag'
 
@@ -17,7 +18,7 @@ attribute 'rsc_mongodb/replicaset',
    :display_name => 'MongoDB ReplicaSet Name',
    :description => 'The replicaset name to use for the mongodb replica',
    :required => 'required',
-   :recipes => ['rsc_mongodb::default','rsc_mongodb::replicaset']
+   :recipes => 'rsc_mongodb::default','rsc_mongodb::replicaset'
 
 # node[:mongodb][:cluster_name]
 
