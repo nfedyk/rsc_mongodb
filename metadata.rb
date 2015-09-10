@@ -18,7 +18,7 @@ attribute 'rsc_mongodb/replicaset',
    :display_name => 'MongoDB ReplicaSet Name',
    :description => 'The replicaset name to use for the mongodb replica',
    :required => 'required',
-   :recipes => 'rsc_mongodb::default','rsc_mongodb::replicaset'
+   :recipes => ['rsc_mongodb::default','rsc_mongodb::replicaset']
 
 # node[:mongodb][:cluster_name]
 
