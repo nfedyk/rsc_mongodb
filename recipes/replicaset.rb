@@ -1,6 +1,7 @@
 class Chef::Recipe
   include Chef::MachineTagHelper
 end
+include_recipe 'machine_tag::default'
 
 replicaset_members = []
 Chef::Log.info 'Searching for mongodb nodes'
