@@ -24,6 +24,6 @@ include_recipe 'mongodb::mongodb_org_repo'
 include_recipe "machine_tag::default"
 
 # Tag host with seed status
-machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:config][:replSet]}" do
+machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:config][:replset]}" do
   action :create
 end
