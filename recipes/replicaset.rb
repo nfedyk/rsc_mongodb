@@ -2,7 +2,7 @@ class Chef::Recipe
   include Chef::MachineTagHelper
 end
 
-members = []
+replicaset_members = []
 
 sets = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}")
 
@@ -21,9 +21,9 @@ sets.each do | set |
 	}
 end
 
-members.sort! { |a,b| a[:host] <=> b[:host] }
+replicaset_members.sort! { |a,b| a[:host] <=> b[:host] }
 
-Chef::Log.info "replicaset members " + members.inspect
+Chef::Log.info "replicaset members " + replicaset_members.inspect
 
 
 mongodb_replicaset node['mongodb']['replicaset'] do
