@@ -20,4 +20,10 @@ node.default['build-essential']['compile_time'] = true
 node.default[:mongodb][:config][:replSet] = #{node.[:rsc_mongodb][:config][:replSet]}
 include_recipe 'build-essential::default'
 include_recipe 'mongodb::mongodb_org_repo'
-include_recipe 'mongodb::replicaset'
+
+include_recipe "machine_tag::default"
+
+# Tag host with seed status
+machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:config][:replSet]}" do
+  action :create
+end

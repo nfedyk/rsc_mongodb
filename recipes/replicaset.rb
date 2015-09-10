@@ -4,7 +4,7 @@ end
 
 members = []
 
-sets = tag_search(node, "mongodb:replicaset=#{node['mongodb']['replicaset']}")
+sets = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:config][:replSet]}")
 
 sets.each do | set |
 
