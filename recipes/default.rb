@@ -17,9 +17,9 @@
 # limitations under the License.
 #
 # Wrapper attribute
-default['build-essential']['compile_time'] = true
+#default['build-essential']['compile_time'] = true
 node.default[:mongodb][:config][:replset] = #{node[:rsc_mongodb][:replicaset]}
-include_recipe 'build-essential::default'
+#include_recipe 'build-essential::default'
 include_recipe 'mongodb::mongodb_org_repo'
 include_recipe 'machine_tag::default'
 
