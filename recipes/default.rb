@@ -16,14 +16,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-node.default['build-essential']['compile_time'] = true
-node.default[:mongodb][:config][:replSet] = #{node.[:rsc_mongodb][:config][:replSet]}
+node.default[:build-essential][:compile_time] = true
+node.default[:mongodb][:config][:replset] = #{node[:rsc_mongodb][:config][:replset]}
 include_recipe 'build-essential::default'
 include_recipe 'mongodb::mongodb_org_repo'
+include_recipe 'machine_tag::default'
 
-include_recipe "machine_tag::default"
-
-# Tag host with seed status
-machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:config][:replset]}" do
-  action :create
+#Tag host with replica set name
+machine_tag "mongodb:replicaset=TestingSet" do
+   action :create
 end
