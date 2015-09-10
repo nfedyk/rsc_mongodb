@@ -3,18 +3,20 @@ class Chef::Recipe
 end
 
 replicaset_members = []
+Chef::Log.info 'Searching for mongodb nodes'
 
-sets = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}")
+replicaset_hosts = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}")
 puts sets
 
-# sets.each do | set |
+replicaset_hosts.each do | server |
 #
-# 	ip_address = set['server:private_0'].first.value + ':27018'
-#
+   ip_address = server['server:private_ip_0'].first.value + ':27018'
+   Chef::Log.info '#{ip_address}'
+
 # 	members << {
 # 		:host => ip_address
 #   	}
-# end
+end
 #
 # replicaset_members.sort! { |a,b| a[:host] <=> b[:host] }
 #
