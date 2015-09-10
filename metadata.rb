@@ -13,7 +13,7 @@ depends 'machine_tag'
 recipe 'rsc_mongodb::default', 'Installs mongodb'
 recipe 'rsc_mongodb::replicaset', 'configures nodes into a replicaset'
 
-attribute "rsc_mongodb/config/replset",
+attribute "rsc_mongodb/replicaset",
    :display_name => "MongoDB ReplicaSet Name",
    :description => "The replicaset name to use for the mongodb replica",
    :required => "required",
