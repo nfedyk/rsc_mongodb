@@ -15,7 +15,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
+include_recipe 'build-essential::default'
+
 node.default[:mongodb][:config][:replset] = #{node[:rsc_mongodb][:replicaset]}
 include_recipe 'mongodb::mongodb_org_repo'
 include_recipe 'machine_tag::default'
