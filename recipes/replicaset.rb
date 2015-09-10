@@ -7,7 +7,7 @@ replicaset_members = []
 Chef::Log.info 'Searching for mongodb nodes'
 
 replicaset_hosts = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}")
-puts sets
+
 
 replicaset_hosts.each do | server |
 #
