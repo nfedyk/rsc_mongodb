@@ -66,11 +66,12 @@ suites:
   run_list:
   # - "recipe[chef-solo-search]"
    - recipe[rsc_mongodb::default]
+   - recipe[rsc_mongodb::replicaset]
   attributes:
-    mongodb:
+    rsc_mongodb:
       cluster_name: kitchen
-      config:
-        replSet: kitchen
+      replicaset: kitchen
+
   excludes:
     # Upstart is not starting mongodb, status script returns 0 and there are no useful logs. wat?
     - ubuntu-10.04
