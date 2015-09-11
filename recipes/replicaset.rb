@@ -24,7 +24,7 @@ end
 #initialize replicaset
 ## initiate replica set
 bash 'configure the replicaset' do
-  code <<-EOF
+  code <<-EOH
     mongo --quiet <<EOF
     rs.initiate({
       _id: '#{node[:rsc_mongodb][:replicaset]}',
@@ -35,5 +35,5 @@ bash 'configure the replicaset' do
         ]
       });
     EOF
-  EOF
+  EOH
 end
