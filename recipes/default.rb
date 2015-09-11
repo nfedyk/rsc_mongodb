@@ -20,11 +20,14 @@ include_recipe 'build-essential::default'
 
 node.default[:mongodb][:config][:replset] = "#{node[:rsc_mongodb][:replicaset]}"
 
+#fix bug with name change mongodb vs mongod .conf 
+node.override['mongodb']['default_init_name'] = 'mongod'
+
 include_recipe 'mongodb::mongodb_org_repo'
 include_recipe 'machine_tag::default'
 include_recipe 'mongodb::default'
 
-node.default[:mongodb][:config][:replset] = 'blah'
+node.default[:mongodb][:config][:replset] = "#{node[:rsc_mongodb][:replicaset]}"
 
 #Tag host with replica set name
 machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}" do
