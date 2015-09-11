@@ -26,9 +26,8 @@ replicaset_hosts.each do | server |
    bash 'add node to replicaset' do
      code <<-EOH
         mongo --quiet <<EOF
-          rs.add(#{ip_address});
+          rs.add("#{ip_address}");
         EOF
       EOH
     end
-
 end
