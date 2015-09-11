@@ -14,9 +14,9 @@ replicaset_hosts.each do | server |
    ip_address = server['server:private_ip_0'].first.value + ':27018'
    Chef::Log.info "#{ip_address}"
 
-# 	members << {
-# 		:host => ip_address
-#   	}
+ 	 mongodb_members << {
+ 		:host => ip_address
+   	}
 end
 #
 # replicaset_members.sort! { |a,b| a[:host] <=> b[:host] }
