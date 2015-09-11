@@ -12,7 +12,7 @@ replicaset_hosts = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:re
 replicaset_hosts.each do | server |
 #
    ip_address = server['server:private_ip_0'].first.value + ':27018'
-   Chef::Log.info '#{ip_address}'
+   Chef::Log.info "#{ip_address}"
 
 # 	members << {
 # 		:host => ip_address
