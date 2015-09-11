@@ -22,8 +22,6 @@ end
 node.set['mongodb']['is_replicaset'] = true
 node.set['mongodb']['cluster_name'] = node['mongodb']['cluster_name']
 
-include_recipe 'mongodb::mongo_gem'
-
   mongodb_instance node['mongodb']['instance_name'] do
     mongodb_type 'mongod'
     port         node['mongodb']['config']['port']
