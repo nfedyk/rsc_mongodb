@@ -10,7 +10,7 @@ depends 'build-essential'
 depends 'mongodb'
 depends 'machine_tag'
 
-recipe 'rsc_mongodb::default', 'Installs mongodb'
+recipe 'rsc_mongodb::default', 'Installs mongodb and sets the replicaset name'
 recipe 'rsc_mongodb::replicaset', 'configures nodes into a replicaset'
 
 attribute 'rsc_mongodb/replicaset',
