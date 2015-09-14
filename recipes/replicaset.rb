@@ -27,6 +27,13 @@ end
 rs_config = rs_config.to_s + "     ]
 }"
 
+file "/tmp/config.js" do
+  content rs_config
+  owner 'root'
+  group 'group'
+  mode '0755'
+end
+
 Chef::Log.info "#{rs_config}"
 ## initiate replica set , replica set name is already in the config
 bash 'initiate the node' do
@@ -35,5 +42,5 @@ bash 'initiate the node' do
       rs.initiate(#{rs_config}.to_s);
     EOF
   EOH
-  flags '-x'
+  flags '-xe'
 end
