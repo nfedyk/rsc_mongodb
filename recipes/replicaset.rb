@@ -10,8 +10,9 @@ Chef::Log.info 'Searching for mongodb nodes'
 replicaset_hosts = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}")
 
 host_id=0
+#generate config file to pass to rs.initiate()
 rs_config = "config = {
-    _id : #{node[:rsc_mongodb][:replicaset]},
+    _id : \'#{node[:rsc_mongodb][:replicaset]}\',
      members : ["
 
 
@@ -19,15 +20,9 @@ replicaset_hosts.each do | server |
 
    ip_address = server['server:private_ip_0'].first.value + ':27017'
    Chef::Log.info "#{ip_address}"
-   rs_config = rs_config.to_s + "{_id: #{host_id}, host: #{ip_address}},"
+   rs_config = rs_config.to_s + "{_id: #{host_id}, host: \'#{ip_address}\'},"
    host_id += 1
-  #  bash 'add node to replicaset' do
-  #    code <<-EOH
-  #       mongo --quiet <<EOF
-  #         rs.add("#{ip_address}");
-  #       EOF
-  #     EOH
-  #   end
+
 end
 rs_config = rs_config.to_s + "     ]
 }"
