@@ -40,5 +40,5 @@ bash 'initiate the node' do
       rs.initiate("#{rs_config}");
     EOF
   EOH
-  flags 'x'
+  flags '-x'
 end
