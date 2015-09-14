@@ -11,7 +11,7 @@ replicaset_hosts = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:re
 
 host_id=0
 rs_config = "config = {
-    _id : mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]},
+    _id : #{node[:rsc_mongodb][:replicaset]},
      members : ["
 
 
