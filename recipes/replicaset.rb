@@ -9,6 +9,9 @@ include_recipe 'machine_tag::default'
 Chef::Log.info 'Searching for mongodb nodes'
 replicaset_hosts = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}")
 
+#debug
+Chef::Log.info "ReplicaSet #{replicaset_hosts}"
+
 #id for each host as it's added.
 host_id=0
 #start of generate config file to pass to rs.initiate()
