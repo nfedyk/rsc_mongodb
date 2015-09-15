@@ -34,11 +34,11 @@ rs_config = rs_config.to_s + "     ]
 
 Chef::Log.info "#{rs_config}"
 ## initiate replica set , replica set name is already in the config
-# bash 'initiate the node' do
-#   code <<-EOH
-#     mongo << CONFIG
-#       rs.initiate("#{rs_config}");
-#     CONFIG
-#   EOH
-#   flags '-xe'
-# end
+bash 'initiate the node' do
+  code <<-EOH
+    mongo << CONFIG
+      rs.initiate("#{rs_config}");
+    CONFIG
+  EOH
+  flags '-xe'
+end
