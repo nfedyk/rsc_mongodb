@@ -37,7 +37,7 @@ Chef::Log.info "#{rs_config}"
 bash 'initiate the node' do
   code <<-EOH
       mongo <<EOF
-        rs.initiate("#{rs_config}".to_s);
+        rs.initiate("#{rs_config}");
         EOF
   EOH
   flags '-xe'
