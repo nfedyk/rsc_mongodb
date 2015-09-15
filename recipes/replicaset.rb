@@ -38,5 +38,5 @@ Chef::Log.info "#{rs_config}"
 ## initiate replica set , replica set name is already in the config
 
 file '/tmp/mongoconfig.js' do
-  content 'rs.initiate("#{rs_config}");'
+  content "rs.initiate(#{rs_config});"
 end
