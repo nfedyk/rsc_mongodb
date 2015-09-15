@@ -40,3 +40,7 @@ Chef::Log.info "#{rs_config}"
 file '/tmp/mongoconfig.js' do
   content "rs.initiate(#{rs_config});"
 end
+
+execute 'configure_mongo' do
+  command '/usr/bin/mongo /tmp/mongoconfig.js'
+end
