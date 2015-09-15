@@ -4,13 +4,15 @@ end
 
 include_recipe 'machine_tag::default'
 
-replicaset_members = []
-Chef::Log.info 'Searching for mongodb nodes'
+#store host info for each member
+replicaset_hosts = []
 
+Chef::Log.info 'Searching for mongodb nodes'
 replicaset_hosts = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}")
 
+#id for each host as it's added.
 host_id=0
-#generate config file to pass to rs.initiate()
+#start of generate config file to pass to rs.initiate()
 rs_config = "config = {
     _id : \'#{node[:rsc_mongodb][:replicaset]}\',
      members : ["
@@ -26,6 +28,7 @@ replicaset_hosts.each do | server |
 end
 rs_config = rs_config.to_s + "     ]
 }"
+#end of generate config file
 
 Chef::Log.info "#{rs_config}"
 ## initiate replica set , replica set name is already in the config
