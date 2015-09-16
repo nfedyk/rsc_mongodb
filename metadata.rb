@@ -13,6 +13,7 @@ depends 'rightscale_volume'
 
 recipe 'rsc_mongodb::default', 'Installs mongodb and sets the replicaset name'
 recipe 'rsc_mongodb::replicaset', 'configures nodes into a replicaset'
+recipe 'rsc_mongodb::volume_default', 'creates , attaches and formats a volume'
 
 attribute 'rsc_mongodb/replicaset',
    :display_name => 'MongoDB ReplicaSet Name',
