@@ -9,6 +9,7 @@ version          '0.1.1'
 depends 'build-essential'
 depends 'mongodb'
 depends 'machine_tag'
+depends 'rightscale_volume'
 
 recipe 'rsc_mongodb::default', 'Installs mongodb and sets the replicaset name'
 recipe 'rsc_mongodb::replicaset', 'configures nodes into a replicaset'
