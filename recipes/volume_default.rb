@@ -1,12 +1,13 @@
 
 if node['rsc_mongodb']['use_storage'] == 'true'
-  node.default['rs-storage']['device']['nickname'] = 'mongo_data_volume'
-  node.default['rs-storage']['device']['volume_size'] = '10'
-  node.default['rs-storage']['device']['filesystem'] = 'ext4'
-  node.default['rs-storage']['device']['mount_point'] = '/mnt/mongodb'
+  # node.default['rs-storage']['device']['nickname'] = 'mongo_data_volume'
+  # node.default['rs-storage']['device']['volume_size'] = '10'
+  # node.default['rs-storage']['device']['filesystem'] = 'ext4'
+  # node.default['rs-storage']['device']['mount_point'] = '/mnt/mongodb'
 #installs right_api_client
 include_recipe 'rightscale_volume::default'
 include_recipe 'rs-storage::volume'
+node.default[:mongodb][:config][:datadir] = "#{node.default['rs-storage']['device']['mount_point']}"
 
 end
 

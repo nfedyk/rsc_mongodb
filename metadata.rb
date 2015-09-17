@@ -27,15 +27,42 @@ attribute 'rsc_mongodb/replicaset',
 attribute 'rsc_mongodb/use_storage',
   :display_name => 'Enable volumes',
   :description => 'Enables the use of volumes for the Mongodb datadir',
-  :required => 'required',
+  :required => 'optional',
+  :default => 'false'
   :type => 'string',
   :recipes => ['rsc_mongodb::volume_default']
 
-    # node['rs-storage']['device']['nickname'] = 'mongo_data_volume'
-    # node['rs-storage']['device']['volume_size'] - the size of the volume to create
-    # node['rs-storage']['device']['filesystem'] - the filesystem to use on the volume
-    # node['rs-storage']['device']['mount_point'] - the location to mount the volume
+attribute 'rsc_mongodb/volumne_nickname',
+  :display_name => 'Volume Name',
+  :description => 'Name of the volume',
+  :required => 'optional',
+  :default => 'mongodb_data_volume'
+  :type => 'string',
+  :recipes => ['rsc_mongodb::volume_default']
 
+attribute 'rsc_mongodb/volumne_size',
+  :display_name => 'Volume Size',
+  :description => 'the size of the volume to create',
+  :required => 'optional',
+  :default => '10'
+  :type => 'string',
+  :recipes => ['rsc_mongodb::volume_default'
+
+attribute 'rsc_mongodb/volumne_filesystem',
+  :display_name => 'Volume Filesystem',
+  :description => 'the filesystem size',
+  :required => 'optional',
+  :default => 'ext4'
+  :type => 'string',
+  :recipes => ['rsc_mongodb::volume_default'
+
+attribute 'rsc_mongodb/mount_point',
+  :display_name => 'Volume Mount Point ',
+  :description => 'the location to mount the volume',
+  :required => 'optional',
+  :default => '/mnt/mongodb'
+  :type => 'string',
+  :recipes => ['rsc_mongodb::volume_default'
 
 
 # node[:mongodb][:cluster_name]
