@@ -24,13 +24,12 @@ attribute 'rsc_mongodb/replicaset',
    :type => 'string',
    :recipes => ['rsc_mongodb::default', 'rsc_mongodb::replicaset']
 
- attribute 'rsc_mongodb/use_storage',
-    :display_name => 'Enable volumes',
-    :description => 'Enables the use of volumes for the Mongodb datadir',
-    :required => 'optional',
-    :type => 'string',
-    :default => 'false'
-    :recipes => ['rsc_mongodb::volume_default']
+attribute 'rsc_mongodb/use_storage',
+  :display_name => 'Enable volumes',
+  :description => 'Enables the use of volumes for the Mongodb datadir',
+  :required => 'required',
+  :type => 'string',
+  :recipes => ['rsc_mongodb::volume_default']
 
     # node['rs-storage']['device']['nickname'] = 'mongo_data_volume'
     # node['rs-storage']['device']['volume_size'] - the size of the volume to create
