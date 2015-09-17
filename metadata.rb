@@ -30,7 +30,7 @@ attribute 'rsc_mongodb/use_storage',
   :description => 'Enables the use of volumes for the Mongodb datadir',
   :required => 'optional',
   :category => 'MongoDB',
-  :default => 'false'
+  :default => 'false',
   :type => 'string',
   :recipes => ['rsc_mongodb::volume_default']
 
@@ -39,7 +39,7 @@ attribute 'rsc_mongodb/volumne_nickname',
   :description => 'Name of the volume',
   :required => 'optional',
   :category => 'MongoDB',
-  :default => 'mongodb_data_volume'
+  :default => 'mongodb_data_volume',
   :type => 'string',
   :recipes => ['rsc_mongodb::volume_default']
 
@@ -48,27 +48,27 @@ attribute 'rsc_mongodb/volumne_size',
   :description => 'the size of the volume to create',
   :required => 'optional',
   :category => 'MongoDB',
-  :default => '10'
+  :default => '10',
   :type => 'string',
-  :recipes => ['rsc_mongodb::volume_default'
+  :recipes => ['rsc_mongodb::volume_default']
 
 attribute 'rsc_mongodb/volumne_filesystem',
   :display_name => 'Volume Filesystem',
   :description => 'the filesystem size',
   :required => 'optional',
   :category => 'MongoDB',
-  :default => 'ext4'
+  :default => 'ext4',
   :type => 'string',
-  :recipes => ['rsc_mongodb::volume_default'
+  :recipes => ['rsc_mongodb::volume_default']
 
 attribute 'rsc_mongodb/mount_point',
   :display_name => 'Volume Mount Point ',
   :description => 'the location to mount the volume',
   :required => 'optional',
   :category => 'MongoDB',
-  :default => '/mnt/mongodb'
+  :default => '/mnt/mongodb',
   :type => 'string',
-  :recipes => ['rsc_mongodb::volume_default'
+  :recipes => ['rsc_mongodb::volume_default']
 
 
 # node[:mongodb][:cluster_name]
