@@ -34,7 +34,7 @@ attribute 'rsc_mongodb/use_storage',
   :type => 'string',
   :recipes => ['rsc_mongodb::volume_default']
 
-attribute 'rsc_mongodb/volumne_nickname',
+attribute 'rsc_mongodb/volumn_nickname',
   :display_name => 'Volume Name',
   :description => 'Name of the volume',
   :required => 'optional',
@@ -43,7 +43,7 @@ attribute 'rsc_mongodb/volumne_nickname',
   :type => 'string',
   :recipes => ['rsc_mongodb::volume_default']
 
-attribute 'rsc_mongodb/volumne_size',
+attribute 'rsc_mongodb/volume_size',
   :display_name => 'Volume Size',
   :description => 'the size of the volume to create',
   :required => 'optional',
@@ -52,7 +52,7 @@ attribute 'rsc_mongodb/volumne_size',
   :type => 'string',
   :recipes => ['rsc_mongodb::volume_default']
 
-attribute 'rsc_mongodb/volumne_filesystem',
+attribute 'rsc_mongodb/volume_filesystem',
   :display_name => 'Volume Filesystem',
   :description => 'the filesystem size',
   :required => 'optional',
@@ -61,7 +61,7 @@ attribute 'rsc_mongodb/volumne_filesystem',
   :type => 'string',
   :recipes => ['rsc_mongodb::volume_default']
 
-attribute 'rsc_mongodb/mount_point',
+attribute 'rsc_mongodb/volume_mount_point',
   :display_name => 'Volume Mount Point ',
   :description => 'the location to mount the volume',
   :required => 'optional',
