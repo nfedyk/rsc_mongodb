@@ -34,7 +34,7 @@ attribute 'rsc_mongodb/use_storage',
   :type => 'string',
   :recipes => ['rsc_mongodb::volume_default']
 
-attribute 'rsc_mongodb/volumn_nickname',
+attribute 'rsc_mongodb/volume_nickname',
   :display_name => 'Volume Name',
   :description => 'Name of the volume',
   :required => 'optional',
