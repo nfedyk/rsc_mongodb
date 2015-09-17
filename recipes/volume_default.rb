@@ -1,5 +1,9 @@
 
 if node['rsc_mongodb']['use_storage'] == 'true'
+  node['rs-storage']['device']['nickname'] = 'mongo_data_volume'
+  node['rs-storage']['device']['volume_size'] = '10'
+  node['rs-storage']['device']['filesystem'] = 'ext4'
+  node['rs-storage']['device']['mount_point'] = '/mnt/mongodb'
 include_recipe 'rs-storage::volume'
 
 end
