@@ -9,6 +9,8 @@ version          '0.1.1'
 depends 'build-essential'
 depends 'mongodb'
 depends 'machine_tag'
+depends 'rs-storage'
+depends 'rightscale_backup'
 depends 'rightscale_volume'
 
 recipe 'rsc_mongodb::default', 'Installs mongodb and sets the replicaset name'
@@ -21,6 +23,13 @@ attribute 'rsc_mongodb/replicaset',
    :required => 'required',
    :type => 'string',
    :recipes => ['rsc_mongodb::default', 'rsc_mongodb::replicaset']
+
+ attribute 'rsc_mongodb/replicaset',
+    :display_name => 'MongoDB ReplicaSet Name',
+    :description => 'The replicaset name to use for the mongodb replica',
+    :required => 'required',
+    :type => 'string',
+    :recipes => ['rsc_mongodb::default', 'rsc_mongodb::replicaset']
 
 # node[:mongodb][:cluster_name]
 
