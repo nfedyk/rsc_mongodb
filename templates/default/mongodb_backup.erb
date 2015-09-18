@@ -1,0 +1,9 @@
+#!/bin/bash -ex
+
+IS_MASTER=`mongo --quiet --eval "d=db.isMaster(); print( d['ismaster'] );"`
+
+if [ "$IS_MASTER" != 'true' ]; then
+
+	rs_run_recipe --name 'rsc_mongodb::mongodb_backup'
+
+fi
