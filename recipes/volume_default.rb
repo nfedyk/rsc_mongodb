@@ -1,6 +1,6 @@
 
 if node['rsc_mongodb']['use_storage'] == 'true'
-node.default['rs-storage']['device']['nickname'] = "#{node['rsc_mongodb']['volumn_nickname']}"
+node.default['rs-storage']['device']['nickname'] = "#{node['rsc_mongodb']['volumne_nickname']}"
 node.default['rs-storage']['device']['volume_size'] = "#{node['rsc_mongodb']['volume_size']}"
 node.default['rs-storage']['device']['filesystem'] = "#{node['rsc_mongodb']['volume_filesystem']}"
 node.default['rs-storage']['device']['mount_point'] = "#{node['rsc_mongodb']['volume_mount_point']}"
