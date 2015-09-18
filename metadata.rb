@@ -78,7 +78,7 @@ attribute 'rsc_mongodb/backup_lineage_name',
   :category => 'MongoDB',
   :default => 'mongodb_backups',
   :type => 'string',
-  :recipes => ['rsc_mongodb::backup_lineage_name']
+  :recipes => ['rsc_mongodb::mongodb_backup']
 
 
 # node[:mongodb][:cluster_name]
