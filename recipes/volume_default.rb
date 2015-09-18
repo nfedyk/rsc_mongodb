@@ -6,6 +6,7 @@ node.default['rs-storage']['device']['filesystem'] = "#{node['rsc_mongodb']['vol
 node.default['rs-storage']['device']['mount_point'] = "#{node['rsc_mongodb']['volume_mount_point']}"
 
 
+
 #installs right_api_client
 include_recipe 'rightscale_volume::default'
 include_recipe 'rs-storage::volume'
