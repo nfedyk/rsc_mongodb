@@ -33,3 +33,12 @@ node.default[:mongodb][:config][:replset] = "#{node[:rsc_mongodb][:replicaset]}"
 machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}" do
    action :create
 end
+
+#if we are using volumes, set up backups on secondaries
+if node['rsc_mongodb']['use_storage'] == 'true'
+
+#mongo --quiet --eval "d=db.isMaster(); print( d['ismaster'] );"
+#if true , exit.
+
+
+end

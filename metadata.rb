@@ -66,7 +66,7 @@ attribute 'rsc_mongodb/volume_mount_point',
   :description => 'the location to mount the volume',
   :required => 'optional',
   :category => 'MongoDB',
-  :default => '/mnt/mongodb',
+  :default => '/var/lib/mongodb',
   :type => 'string',
   :recipes => ['rsc_mongodb::volume_default']
 

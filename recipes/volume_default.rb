@@ -9,8 +9,8 @@ node.default['rs-storage']['device']['mount_point'] = "#{node['rsc_mongodb']['vo
 #installs right_api_client
 include_recipe 'rightscale_volume::default'
 include_recipe 'rs-storage::volume'
-node.default[:mongodb][:config][:datadir] = "#{node.default['rs-storage']['device']['mount_point']}"
 
-#if not the master , run backups ,  is.Master() logic , here on in cron job script
+#when using volumes we set the datadir to the mount point.
+node.default[:mongodb][:config][:datadir] = "#{node.default['rs-storage']['device']['mount_point']}"
 
 end
