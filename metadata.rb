@@ -71,6 +71,15 @@ attribute 'rsc_mongodb/volume_mount_point',
   :type => 'string',
   :recipes => ['rsc_mongodb::volume_default']
 
+attribute 'rsc_mongodb/backup_lineage_name',
+  :display_name => 'Lineage name for backups',
+  :description => 'lineage name used for backups',
+  :required => 'optional',
+  :category => 'MongoDB',
+  :default => 'mongodb_backups',
+  :type => 'string',
+  :recipes => ['rsc_mongodb::backup_lineage_name']
+
 
 # node[:mongodb][:cluster_name]
 
