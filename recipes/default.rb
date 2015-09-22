@@ -38,6 +38,8 @@ end
 #the cron script will check if it running on a secondary
 if node['rsc_mongodb']['use_storage'] == 'true'
 
+Chef::Log.info "Volumes are being used. Adding backup script and cronjob"
+
     #create the backup script.
     template '/usr/bin/mongodb_backup.sh' do
       source 'mongodb_backup.erb'
