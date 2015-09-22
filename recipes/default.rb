@@ -48,7 +48,7 @@ Chef::Log.info "Volumes are being used. Adding backup script and cronjob"
       mode '0755'
     end
 
-    cron_d 'mongodb-backup' do
+    cron 'mongodb-backup' do
       minute  '0'
       hour    '1'
       command '/usr/bin/mongodb_backup.sh'
