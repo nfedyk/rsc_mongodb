@@ -33,7 +33,7 @@ attribute 'rsc_mongodb/use_storage',
   :category => 'MongoDB',
   :default => 'false',
   :type => 'string',
-  :recipes => ['rsc_mongodb::volume_default']
+  :recipes => ['rsc_mongodb::volume_default', 'rsc_mongodb::default']
 
 attribute 'rsc_mongodb/volume_nickname',
   :display_name => 'Volume Name',
