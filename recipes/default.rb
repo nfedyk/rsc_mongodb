@@ -34,26 +34,26 @@ machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}" do
    action :create
 end
 
-#if we are using volumes, set up backups on all nodes.
-#the cron script will check if it running on a secondary
-if node['rsc_mongodb']['use_storage'] == 'true'
-
-        #create the backup script.
-        template '/usr/bin/mongodb_backup.sh'
-          source 'mongodb_backup.erb'
-          owner 'root'
-          group 'root'
-          mode '0755'
-        end
-
-        cron_d 'mongodb-backup' do
-          minute  0
-          hour    '*/1'
-          command '/usr/bin/mongodb_backup.sh'
-          user    'root'
-        end
-#mongo --quiet --eval "d=db.isMaster(); print( d['ismaster'] );"
-#if true , exit. false run the backups.
-
-
-end
+# #if we are using volumes, set up backups on all nodes.
+# #the cron script will check if it running on a secondary
+# if node['rsc_mongodb']['use_storage'] == 'true'
+#
+#         #create the backup script.
+#         template '/usr/bin/mongodb_backup.sh' do
+#           source 'mongodb_backup.erb'
+#           owner 'root'
+#           group 'root'
+#           mode '0755'
+#         end
+#
+#         cron_d 'mongodb-backup' do
+#           minute  '0'
+#           hour    '*/1'
+#           command '/usr/bin/mongodb_backup.sh'
+#           user    'root'
+#         end
+# #mongo --quiet --eval "d=db.isMaster(); print( d['ismaster'] );"
+# #if true , exit. false run the backups.
+#
+#
+# end
