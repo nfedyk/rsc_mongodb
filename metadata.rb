@@ -80,3 +80,11 @@ attribute 'rsc_mongodb/backup_lineage_name',
   :default => 'mongodb_backups',
   :type => 'string',
   :recipes => ['rsc_mongodb::mongodb_backup']
+
+attribute 'rsc_mongodb/restore_lineage_name',
+  :display_name => 'Lineage name of the volume to restore from',
+  :description => 'lineage name to restore from',
+  :required => 'optional',
+  :category => 'MongoDB',
+  :type => 'string',
+  :recipes => ['rsc_mongodb::restore_from_backup']
