@@ -30,9 +30,11 @@ node.override['mongodb']['default_init_name'] = 'mongod'
 
 include_recipe 'mongodb::mongodb_org_repo'
 include_recipe 'machine_tag::default'
-include_recipe 'mongodb::default'
+
 
 node.default[:mongodb][:config][:replset] = "#{node[:rsc_mongodb][:replicaset]}"
+
+include_recipe 'mongodb::default'
 
 #Tag host with replica set name
 machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}" do
