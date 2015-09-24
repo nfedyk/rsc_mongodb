@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: rsc_skeleton_cookbook
+# Cookbook Name:: rsc_mongodb
 # Recipe:: default
 #
-# Copyright (C) 2014 RightScale Inc
+# Copyright (C) 2015 RightScale Inc
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,6 +15,11 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+marker "recipe_start"
+
+marker "recipe_start_rightscale" do
+  template "rightscale_audit_entry.erb"
+end
 
 include_recipe 'build-essential::default'
 

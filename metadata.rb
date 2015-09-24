@@ -13,6 +13,7 @@ depends 'rs-storage'
 depends 'rightscale_backup'
 depends 'rightscale_volume'
 depends 'cron'
+depends 'marker'
 
 recipe 'rsc_mongodb::default', 'Installs mongodb and sets the replicaset name'
 recipe 'rsc_mongodb::replicaset', 'configures nodes into a replicaset'
