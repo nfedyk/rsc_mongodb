@@ -35,13 +35,14 @@ include_recipe 'machine_tag::default'
 node.default[:mongodb][:config][:replset] = "#{node[:rsc_mongodb][:replicaset]}"
 
 if node['rsc_mongodb']['use_storage'] == 'true'
-
+Chef::Log.info "Volumes are being used. Waiting for volume to be mounted"
 ruby_block 'wait for volumes' do
   block do
     true until ::File.exists?('/var/lib/mongodb')
   end
 end
 
+Chef::Log.info "Running the mongodb installer"
 include_recipe 'mongodb::default'
 
 end
