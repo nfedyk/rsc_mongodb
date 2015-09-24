@@ -34,7 +34,18 @@ include_recipe 'machine_tag::default'
 
 node.default[:mongodb][:config][:replset] = "#{node[:rsc_mongodb][:replicaset]}"
 
+if node['rsc_mongodb']['use_storage'] == 'true'
+
+ruby_block 'wait for volumes' do
+  block do
+    true until ::File.exists?('/var/lib/mongodb')
+  end
+end
+
 include_recipe 'mongodb::default'
+
+end
+
 
 #Tag host with replica set name
 machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}" do
