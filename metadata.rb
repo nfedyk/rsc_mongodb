@@ -83,10 +83,19 @@ attribute 'rsc_mongodb/backup_lineage_name',
   :type => 'string',
   :recipes => ['rsc_mongodb::mongodb_backup']
 
+attribute 'rsc_mongodb/restore_from_backup',
+  :display_name => 'Restore From Backup',
+  :description => 'volume creation will use a snapshot',
+  :required => 'optional',
+  :category => 'MongoDB',
+  :default => 'false',
+  :type => 'string',
+  :recipes => ['rsc_mongodb::volume_default', 'rsc_mongodb::default']
+
 attribute 'rsc_mongodb/restore_lineage_name',
   :display_name => 'Lineage name of the volume to restore from',
   :description => 'lineage name to restore from',
   :required => 'optional',
   :category => 'MongoDB',
   :type => 'string',
-  :recipes => ['rsc_mongodb::restore_from_backup']
+  :recipes => ['rsc_mongodb::volume_default']
