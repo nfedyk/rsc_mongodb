@@ -29,7 +29,7 @@ include_recipe 'rightscale_volume::default'
       #add the restore lineage here if you'd like to create a volume from a snapshot.
       if node[:rsc_mongodb][:restore_from_backup] == 'true'
       Chef::Log.info "Restoring from  lineage: #{node['rsc_mongodb']['backup_lineage_name']}"
-      node.default[:rs-storage][:restore][:lineage] = "#{node['rsc_mongodb']['restore_lineage_name']}"
+      node.default['rs-storage']['restore']['lineage'] = "#{node['rsc_mongodb']['restore_lineage_name']}"
       end
 
 include_recipe 'rs-storage::volume'
