@@ -16,8 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-if node[:rsc_mongodb][:use_storage] == 'true'
+#if restoring from backups , then enable the volume use
+if node[:rsc_mongodb][:use_storage] == 'true' || node[:rsc_mongodb][:restore_from_backup] == 'true'
 node.default['rs-storage']['device']['nickname'] = "#{node['rsc_mongodb']['volume_nickname']}"
 node.default['rs-storage']['device']['volume_size'] = "#{node['rsc_mongodb']['volume_size']}"
 node.default['rs-storage']['device']['filesystem'] = "#{node['rsc_mongodb']['volume_filesystem']}"
@@ -38,3 +38,9 @@ include_recipe 'rs-storage::volume'
 node.default[:mongodb][:config][:dbpath] = "#{node.default['rs-storage']['device']['mount_point']}"
 
 end
+
+#test data
+#Retrieve the dataset from https://raw.githubusercontent.com/mongodb/docs-assets/primer-dataset/dataset.json and save to a file named primer-dataset.json.
+#mongo --host x.x.x.x `mongo --quiet --eval "db.isMaster()['primary']"`
+#rs.add("54.161.200.221")
+#mongo --host 54.161.172.179 `mongo --quiet --eval "db.isMaster()['primary']"`
