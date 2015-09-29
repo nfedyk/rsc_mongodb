@@ -20,6 +20,7 @@ recipe 'rsc_mongodb::replicaset', 'configures nodes into a replicaset'
 recipe 'rsc_mongodb::volume_default', 'creates , attaches and formats a volume'
 recipe 'rsc_mongodb::mongodb_backup', 'backsup the mongodb volume on secondary nodes'
 recipe 'rsc_mongodb::restore_from_backup', 'restores the mongodb volumes from a snapshot'
+recipe 'rsc_mongodb::add_to_replicaset', 'add this node to an existing replicaset , users the replicaset name to find nodes.'
 
 attribute 'rsc_mongodb/replicaset',
    :display_name => 'MongoDB ReplicaSet Name',
