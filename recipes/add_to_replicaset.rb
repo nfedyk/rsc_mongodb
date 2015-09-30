@@ -8,8 +8,8 @@ include_recipe 'machine_tag::default'
 Chef::Log.info 'Searching for mongodb nodes'
 replicaset_hosts = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}")
 
-
-Chef::Log.info "replicaset_hosts[1]['server:private_ip_0'].first.value"
+ip_address = replicaset_hosts[1]['server:private_ip_0'].first.value
+Chef::Log.info "#{ip_address}"
 
 #   $ip_address = server['server:private_ip_0'].first.value + ':27017'
 
