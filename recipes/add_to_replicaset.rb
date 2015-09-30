@@ -9,7 +9,7 @@ Chef::Log.info 'Searching for mongodb nodes'
 replicaset_hosts = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}")
 
 
-
+host_id=0
 replicaset_hosts.each do | server |
 
    ip_address = server['server:private_ip_0'].first.value + ':27017'
