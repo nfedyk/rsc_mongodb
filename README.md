@@ -8,8 +8,26 @@
 
 Provides recipes for managing volumes on a Server in a RightScale supported cloud which include:
 
-* Creation of single and multi-stripe volumes
+* Creation of a replicaset with or without volume support (volumes required for backup and restore functionality)
 * Taking backups of volumes
+
+#Use Cases
+* Replicaset without volume support.
+    set use_storage and restore_from_backup to false and boot 3 nodes.
+    Once operational, on a single node execute the "replicaset" recipe.
+    Once that completes you should have a replicaset configured and ready.
+
+* Replicaset with volume support.
+    set the use_storage input to true and boot 3 nodes.
+    Once operational, on a single node execute the "replicaset" recipe.
+    Once that completes you should have a replicaset configured and ready.
+
+* Restore Replicaset Node from a backup.
+    set the restore_from_backup to true and boot a single node.
+    Once operational, execute the add_to_replicaset recipe.
+    Once that completes you should have that member added to the replicaset
+
+
 
 Github Repository: [https://github.com/rightscale-cookbooks/rs-storage](https://github.com/rightscale-cookbooks/rs-storage)
 

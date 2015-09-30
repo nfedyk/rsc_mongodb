@@ -20,7 +20,6 @@ end
 #find primary
 #{primary_mongo_node} = mongo --quiet --eval "db.isMaster()['primary']"
 
-Chef::Log.info "#{rs_config}"
 ## initiate replica set , replica set name is already in the config
 bash 'initiate the node' do
   code <<-EOH
