@@ -22,7 +22,7 @@ Chef::Log.info "Host ip: #{ip_address}"
 ## initiate replica set , replica set name is already in the config
 bash 'initiate the node' do
   code <<-EOH
-    mongo --host #{node[:rsc_mongodb][:replicaset]}/#{$ip_address}<<CONFIG
+    mongo --host #{node[:rsc_mongodb][:replicaset]}/#{ip_address}<<CONFIG
       rs.add("#{node[:cloud][:private_ips][0]}");
     CONFIG
   EOH
