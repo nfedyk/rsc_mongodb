@@ -35,11 +35,14 @@ include_recipe 'machine_tag::default'
 Chef::Log.info "Running the mongodb installer"
 include_recipe 'mongodb::default'
 
-
-#Tag host with replica set name
-machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}" do
-   action :create
+#don't tag host if recovering from backup
+if node[:rsc_mongodb][:restore_from_backup] != 'true' do
+      #Tag host with replica set name
+      machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}" do
+         action :create
+      end
 end
+
 
 #if we are using volumes, set up backups on all nodes.
 #the cron script will check if it running on a secondary
