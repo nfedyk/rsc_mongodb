@@ -4,13 +4,13 @@ end
 
 include_recipe 'machine_tag::default'
 
-Chef::Log.info 'Searching a mongodb node'
+Chef::Log.info 'Searching for a mongodb node'
 
 mongo_node = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}")
 
 
-   ip_address = mongo_node['server:private_ip_0'].first.value + ':27017'
-   Chef::Log.info "Found node in replicaset with ip: #{ip_address}"
+ip_address = mongo_node['server:private_ip_0'].first.value + ':27017'
+Chef::Log.info "Found node in replicaset with ip: #{ip_address}"
 
 
 

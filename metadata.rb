@@ -28,7 +28,7 @@ attribute 'rsc_mongodb/replicaset',
    :required => 'required',
    :category => 'MongoDB',
    :type => 'string',
-   :recipes => ['rsc_mongodb::default', 'rsc_mongodb::replicaset']
+   :recipes => ['rsc_mongodb::default', 'rsc_mongodb::replicaset', 'rsc_mongodb::add_to_replicaset']
 
 attribute 'rsc_mongodb/use_storage',
   :display_name => 'Enable volumes',
