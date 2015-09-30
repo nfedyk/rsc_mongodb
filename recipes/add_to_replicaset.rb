@@ -10,20 +10,22 @@ mongo_node = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:replicas
 
 
    ip_address = mongo_node['server:private_ip_0'].first.value + ':27017'
-   Chef::Log.info "#{ip_address}"
+   Chef::Log.info "Found node in replicaset with ip: #{ip_address}"
 
 
 
-rs_config = rs_config.to_s + "     ]
-}"
 
-Chef::Log.info "#{rs_config}"
-## initiate replica set , replica set name is already in the config
-bash 'initiate the node' do
-  code <<-EOH
-    mongo <<CONFIG
-      rs.add(#{ip_address});
-    CONFIG
-  EOH
-  flags '-xe'
-end
+# Chef::Log.info "#{rs_config}"
+# ## initiate replica set , replica set name is already in the config
+# bash 'initiate the node' do
+#   code <<-EOH
+#     mongo <<CONFIG
+#       rs.add(#{ip_address});
+#     CONFIG
+#   EOH
+#   flags '-xe'
+# end
+#
+# machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}" do
+#    action :create
+# end
