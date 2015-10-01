@@ -20,6 +20,16 @@ Chef::Log.info "Host ip: #{ip_address}"
 #{primary_mongo_node} = mongo --quiet --eval "db.isMaster()['primary']"
 
 ## initiate replica set , replica set name is already in the config
+
+file '/tmp/mongoconfig.js' do
+  content "rs.add("#{node[:cloud][:private_ips][0]}");"
+end
+
+execute 'configure_mongo' do
+  command '/usr/bin/mongo /tmp/mongoconfig.js'
+end
+
+
 bash 'initiate the node' do
   code <<-EOH
     mongo --host #{node[:rsc_mongodb][:replicaset]}/#{ip_address}<<CONFIG
@@ -31,6 +41,30 @@ end
 
 machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}" do
    action :create
+end
+
+#Backup the restored node only after it has joined the replicaset
+
+if node['rsc_mongodb']['restore_from_backup'] == 'true'
+
+Chef::Log.info "Volumes are being used. Adding backup script and cronjob"
+
+    #create the backup script.
+    template '/usr/bin/mongodb_backup.sh' do
+      source 'mongodb_backup.erb'
+      owner 'root'
+      group 'root'
+      mode '0755'
+    end
+
+    cron 'mongodb-backup' do
+      minute  '0'
+      hour    '*/1'
+      command '/usr/bin/mongodb_backup.sh'
+      user    'root'
+    end
+#mongo --quiet --eval "d=db.isMaster(); print( d['ismaster'] );"
+#if true , exit. false run the backups.
 end
 
 #connects to primary everytime.

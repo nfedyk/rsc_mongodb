@@ -41,6 +41,8 @@ end
 
 #test data
 #Retrieve the dataset from https://raw.githubusercontent.com/mongodb/docs-assets/primer-dataset/dataset.json and save to a file named primer-dataset.json.
+#mongoimport --db test --file primer-dataset.json
+#on a slave host db.getMongo().setSlaveOk()   - check to see if data is on that node.
 #mongo --host x.x.x.x `mongo --quiet --eval "db.isMaster()['primary']"`
 #rs.add("54.161.200.221")
 #mongo --host 54.161.172.179 `mongo --quiet --eval "db.isMaster()['primary']"`
