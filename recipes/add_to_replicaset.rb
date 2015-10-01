@@ -29,6 +29,7 @@ execute 'configure_mongo' do
   command '/usr/bin/mongo /tmp/mongoconfig.js'
 end
 
+Chef::Log.info "Node's Current IP: #{node['cloud']['private_ips'][0]}"
 
 bash 'initiate the node' do
   code <<-EOH
