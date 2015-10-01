@@ -28,7 +28,7 @@ Chef::Log.info "Host ip: #{ip_address}"
 ## initiate replica set , replica set name is already in the config
 
 file '/tmp/mongoconfig.js' do
-  content "rs.add(\"#{node[:cloud][:private_ips][0]}\");"
+  content "rs.add('#{node[:cloud][:private_ips][0]}');"
 end
 
 execute 'configure_mongo' do
