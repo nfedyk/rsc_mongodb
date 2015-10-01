@@ -46,7 +46,7 @@ end
 
 #if we are using volumes, set up backups on all nodes.
 #the cron script will check if it running on a secondary
-if node['rsc_mongodb']['use_storage'] == 'true' && if node['rsc_mongodb']['restore_from_backup'] != 'true'
+if node['rsc_mongodb']['use_storage'] == 'true' && node['rsc_mongodb']['restore_from_backup'] != 'true'
 
 Chef::Log.info "Volumes are being used. Adding backup script and cronjob"
 
