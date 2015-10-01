@@ -34,7 +34,7 @@ Chef::Log.info "Node's Current IP: #{node['cloud']['private_ips'][0]}"
 bash 'initiate the node' do
   code <<-EOH
     mongo --host #{node[:rsc_mongodb][:replicaset]}/#{ip_address}<<CONFIG
-      rs.add("#{node['cloud']['private_ips'][0]}");
+      rs.add(#{node['cloud']['private_ips'][0]});
     CONFIG
   EOH
   flags '-xe'
