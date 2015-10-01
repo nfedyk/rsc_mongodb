@@ -28,7 +28,7 @@ Chef::Log.info "Host ip: #{ip_address}"
 ## initiate replica set , replica set name is already in the config
 
 file '/tmp/mongoconfig.js' do
-  content "rs.add("#{node[:cloud][:private_ips][0]}");"
+  content "rs.add(#{node[:cloud][:private_ips][0]});"
 end
 
 execute 'configure_mongo' do
@@ -37,15 +37,15 @@ end
 
 Chef::Log.info "Node's Current IP: #{node['cloud']['private_ips'][0]}"
 
-bash 'initiate the node' do
-  code <<-EOH
-    echo #{node['cloud']['private_ips'][0]}
-    # mongo --host #{node[:rsc_mongodb][:replicaset]}/#{ip_address}<<CONFIG
-    #   rs.add(#{node['cloud']['private_ips'][0]});
-    # CONFIG
-  EOH
-  flags '-xe'
-end
+# bash 'initiate the node' do
+#   code <<-EOH
+#     echo #{node['cloud']['private_ips'][0]}
+#     # mongo --host #{node[:rsc_mongodb][:replicaset]}/#{ip_address}<<CONFIG
+#     #   rs.add(#{node['cloud']['private_ips'][0]});
+#     # CONFIG
+#   EOH
+#   flags '-xe'
+# end
 
 machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}" do
    action :create
