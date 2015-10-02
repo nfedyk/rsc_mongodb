@@ -10,6 +10,9 @@ end
 
 include_recipe 'machine_tag::default'
 
+machine_tag "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}" do
+   action :delete
+end
 
 Chef::Log.info 'Searching for mongodb nodes'
 replicaset_hosts = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:replicaset]}")
