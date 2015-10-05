@@ -16,11 +16,11 @@ depends 'cron'
 depends 'marker'
 
 recipe 'rsc_mongodb::default', 'Installs mongodb and sets the replicaset name'
-recipe 'rsc_mongodb::replicaset', 'configures nodes into a replicaset'
-recipe 'rsc_mongodb::volume_default', 'creates , attaches and formats a volume'
-recipe 'rsc_mongodb::mongodb_backup', 'backsup the mongodb volume on secondary nodes'
-recipe 'rsc_mongodb::restore_from_backup', 'restores the mongodb volumes from a snapshot'
-recipe 'rsc_mongodb::add_to_replicaset', 'add this node to an existing replicaset , users the replicaset name to find nodes.'
+recipe 'rsc_mongodb::replicaset', 'Configures nodes into a replicaset'
+recipe 'rsc_mongodb::volume_default', 'Creates , attaches and formats a volume'
+recipe 'rsc_mongodb::mongodb_backup', 'Backsup the mongodb volume on secondary nodes'
+#recipe 'rsc_mongodb::restore_from_backup', 'Restores the mongodb volumes from a snapshot'
+recipe 'rsc_mongodb::add_to_replicaset', 'Add this node to an existing replicaset , users the replicaset name to find nodes.'
 
 attribute 'rsc_mongodb/replicaset',
    :display_name => 'MongoDB ReplicaSet Name',
