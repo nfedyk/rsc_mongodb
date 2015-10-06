@@ -4,7 +4,7 @@ maintainer_email 'premium@rightscale.com'
 license          'Apache 2.0'
 description      'Installs/Configures Mongo DB'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.1'
+version          '1.0.'
 
 depends 'build-essential'
 depends 'mongodb'
@@ -12,14 +12,12 @@ depends 'machine_tag'
 depends 'rs-storage'
 depends 'rightscale_backup'
 depends 'rightscale_volume'
-depends 'cron'
 depends 'marker'
 
 recipe 'rsc_mongodb::default', 'Installs mongodb and sets the replicaset name'
 recipe 'rsc_mongodb::replicaset', 'Configures nodes into a replicaset'
 recipe 'rsc_mongodb::volume_default', 'Creates , attaches and formats a volume'
 recipe 'rsc_mongodb::mongodb_backup', 'Backsup the mongodb volume on secondary nodes'
-#recipe 'rsc_mongodb::restore_from_backup', 'Restores the mongodb volumes from a snapshot'
 recipe 'rsc_mongodb::add_to_replicaset', 'Add this node to an existing replicaset , users the replicaset name to find nodes.'
 
 attribute 'rsc_mongodb/replicaset',

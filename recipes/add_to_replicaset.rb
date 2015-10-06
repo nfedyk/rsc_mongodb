@@ -1,3 +1,21 @@
+#
+# Cookbook Name:: rsc_mongodb
+# Recipe:: add_to_replicaset
+#
+# Copyright (C) 2015 RightScale Inc
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 marker "recipe_start"
 
 marker "recipe_start_rightscale" do
@@ -19,14 +37,6 @@ replicaset_hosts = tag_search(node, "mongodb:replicaset=#{node[:rsc_mongodb][:re
 
 ip_address = replicaset_hosts[1]['server:private_ip_0'].first.value
 Chef::Log.info "Host ip: #{ip_address}"
-
-#   $ip_address = server['server:private_ip_0'].first.value + ':27017'
-
-
-
-
-#find primary
-#{primary_mongo_node} = mongo --quiet --eval "db.isMaster()['primary']"
 
 ## initiate replica set , replica set name is already in the config
 
@@ -64,9 +74,5 @@ Chef::Log.info "Volumes are being used. Adding backup script and cronjob"
       command '/usr/bin/mongodb_backup.sh'
       user    'root'
     end
-#mongo --quiet --eval "d=db.isMaster(); print( d['ismaster'] );"
-#if true , exit. false run the backups.
-end
 
-#connects to primary everytime.
-#mongo --host my_repl_set_name/my_mongo_server1
+end
