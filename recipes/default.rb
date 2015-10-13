@@ -27,8 +27,10 @@ node.default[:mongodb][:config][:replSet] = "#{node[:rsc_mongodb][:replicaset]}"
 
 #fix bug with name change mongodb vs mongod .conf
 node.override['mongodb']['default_init_name'] = 'mongod'
+node.override['mongodb']['package_version'] = '3.0'
 
-include_recipe 'mongodb::10gen_repo'
+
+include_recipe 'mongodb::mongodb::10gen_repo'
 include_recipe 'machine_tag::default'
 
 
