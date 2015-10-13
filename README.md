@@ -1,10 +1,6 @@
 # rs-mongodb cookbook
 
-[![Release](https://img.shields.io/github/release/rightscale-cookbooks/rs-mongodb.svg?style=flat)][release]
-[![Build Status](https://img.shields.io/travis/rightscale-cookbooks/rs-mongodb.svg?style=flat)][travis]
 
-[release]: https://github.com/rightscale-cookbooks/rs-mongodb/releases/latest
-[travis]: https://travis-ci.org/rightscale-cookbooks/rs-mongodb
 
 Provides recipes for managing volumes on a Server in a RightScale supported cloud which include:
 
@@ -13,21 +9,23 @@ Provides recipes for managing volumes on a Server in a RightScale supported clou
 
 #Use Cases
 Replicaset without volume support.
-Set use_storage and restore_from_backup inputs to false and boot 3 nodes.
-Once operational, on a single node execute the "rsc_mongodb::replicaset" recipe.
-Once that completes you should have a replicaset configured and ready.
+ - Set use_storage and restore_from_backup inputs to false and boot 3 nodes.
+ - Once operational, on a single node execute the "rsc_mongodb::replicaset" recipe.
+ - Once that completes you should have a replicaset configured and ready.
+ 
 Replicaset with volume support.
-Set the use_storage input to true and boot 3 nodes.
-Once operational, on a single node execute the "rsc_mongodb::replicaset" recipe.
-Once that completes you should have a replicaset configured and ready.
+ - Set the use_storage input to true and boot 3 nodes.
+ - Once operational, on a single node execute the "rsc_mongodb::replicaset" recipe.
+ - Once that completes you should have a replicaset configured and ready.
+ 
 Restore Replicaset Node from a backup.
-Set the restore_from_backup to true and boot a single node.
-Once operational, execute the "rsc_mongodb::add_to_replicaset" recipe.
-Once that completes you should have that member added to the replicaset
+ - Set the restore_from_backup to true and boot a single node.
+ - Once operational, execute the "rsc_mongodb::add_to_replicaset" recipe.
+ - Once that completes you should have that member added to the replicaset
 
 
 
-Github Repository: [https://github.com/rightscale-cookbooks/rs-storage](https://github.com/rightscale-cookbooks/rs-storage)
+Github Repository: [https://github.com/RightScale-Services-Cookbooks/rsc_mongodb](https://github.com/RightScale-Services-Cookbooks/rsc_mongodb)
 
 # Requirements
 
@@ -40,19 +38,9 @@ Github Repository: [https://github.com/rightscale-cookbooks/rs-storage](https://
 
 # Usage
 
-## Creating a new volume
-
-To create a new volume, run the `rs-storage::volume` recipe with the following attributes set:
-
-- `node['rs-storage']['device']['nickname']` - the nickname of the volume
-
-This will create a new volume, attach it to the server, format it with the filesystem specified, and mount it on the
-location specified.
 
 # Attributes
 
-- `node['rs-storage']['device']['nickname']` - The nickname for the device or the logical volume comprising multiple of
-  devices. Default is `'data_storage'`.
 
 
 # Recipes
