@@ -36,7 +36,6 @@ include_recipe 'machine_tag::default'
 file "/etc/apt/sources.list.d/mongodb-org-3.0.list" do
   action :create_if_missing
   content 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse'
-  notifies :run, resources(:execute => "apt-get update"), :immediately
 end
 
 
