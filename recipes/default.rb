@@ -33,10 +33,11 @@ node.override['mongodb']['default_init_name'] = 'mongod'
 include_recipe 'mongodb::mongodb_org_repo'
 include_recipe 'machine_tag::default'
 
-#add repository with 3.0
-apt_repository 'mongodb-org-3.0' do
-  uri        'http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0'
-  components ['multiverse']
+file "/etc/apt/sources.list.d/mongodb-org-3.0.list" do
+  action :create_if_missing
+  content 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse'
+  notifies :run, resources(:execute => "apt-get-update"), :immediately
+
 end
 
 
