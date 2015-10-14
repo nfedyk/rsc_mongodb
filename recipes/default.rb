@@ -33,9 +33,18 @@ node.override['mongodb']['default_init_name'] = 'mongod'
 include_recipe 'mongodb::mongodb_org_repo'
 include_recipe 'machine_tag::default'
 
+#add repository with 3.0
+apt_repository 'mongodb-org-3.0' do
+  uri        'http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0'
+  components ['multiverse']
+end
+
+
 
 Chef::Log.info "Running the mongodb installer"
 include_recipe 'mongodb::default'
+
+
 
 #don't tag host if recovering from backup
 if node['rsc_mongodb']['restore_from_backup'] != 'true'
