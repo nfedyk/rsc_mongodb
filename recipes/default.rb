@@ -38,7 +38,9 @@ file "/etc/apt/sources.list.d/mongodb-org-3.0.list" do
   content 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse'
 end
 
-
+execute 'update repositories' do
+  command 'apt -y update'
+end
 
 Chef::Log.info "Running the mongodb installer"
 include_recipe 'mongodb::default'
