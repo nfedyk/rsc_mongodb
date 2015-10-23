@@ -33,6 +33,8 @@ node.override['mongodb']['default_init_name'] = 'mongod'
 include_recipe 'mongodb::mongodb_org_repo'
 include_recipe 'machine_tag::default'
 
+Chef::Log.ifo "node[:platform_family]"
+
 
 if node[:platform_family].include?("centos")
 
