@@ -61,7 +61,7 @@ Chef::Log.info "Volumes are being used. Adding backup script and cronjob"
     cron 'mongodb-backup' do
       minute  '0'
       hour    '*/1'
-      command 'sleep $[RANDOM%300];/usr/bin/mongodb_backup.sh'
+      command '/usr/bin/mongodb_backup.sh'
       user    'root'
     end
 #mongo --quiet --eval "d=db.isMaster(); print( d['ismaster'] );"

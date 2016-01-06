@@ -1,5 +1,7 @@
 #!/bin/bash -ex
 
+sleep $[RANDOM%300]
+
 IS_MASTER=`mongo --quiet --eval "d=db.isMaster(); print( d['ismaster'] );"`
 
 if [ "$IS_MASTER" != 'true' ]; then
