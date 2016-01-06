@@ -16,7 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#Cron executes this recipe to take backups of the mongodb volume
+# Cron executes this recipe to take backups of the mongodb volume
 
 node.override['rs-storage']['device']['mount_point'] = "#{node['rsc_mongodb']['volume_mount_point']}"
 node.override['rs-storage']['backup']['lineage'] = "#{node['rsc_mongodb']['backup_lineage_name']}"
