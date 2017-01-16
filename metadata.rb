@@ -20,6 +20,7 @@ recipe 'rsc_mongodb::replicaset', 'Configures nodes into a replicaset'
 recipe 'rsc_mongodb::volume_default', 'Creates , attaches and formats a volume'
 recipe 'rsc_mongodb::mongodb_backup', 'Backsup the mongodb volume on secondary nodes'
 recipe 'rsc_mongodb::add_to_replicaset', 'Add this node to an existing replicaset , users the replicaset name to find nodes.'
+recipe 'rsc_mongodb::test_od', 'Local test'
 
 attribute 'rsc_mongodb/replicaset',
    :display_name => 'MongoDB ReplicaSet Name',
@@ -99,3 +100,11 @@ attribute 'rsc_mongodb/restore_lineage_name',
   :category => 'MongoDB',
   :type => 'string',
   :recipes => ['rsc_mongodb::volume_default']
+    
+attribute 'rsc_mongodb/test_os',
+  :display_name => 'test_os',
+  :description => 'test_os',
+  :required => 'optional',
+  :category => 'MongoDB',
+  :type => 'string',
+  :recipes => ['rsc_mongodb::test_os']    
