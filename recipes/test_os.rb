@@ -6,3 +6,9 @@ if node[:platform_family].include?("rhel")
 else
   Chef::Log.info 'ubuntu'
 end
+case platform
+when "ubuntu"
+  set[:web_apache][:config_subdir] = "apache2"
+when "centos", "redhat"
+  set[:web_apache][:config_subdir] = "httpd"
+end

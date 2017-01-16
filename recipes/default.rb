@@ -33,13 +33,25 @@ node.override['mongodb']['default_init_name'] = 'mongod'
 include_recipe 'mongodb::mongodb_org_repo'
 include_recipe 'machine_tag::default'
 
-file "/etc/apt/sources.list.d/mongodb-org-3.0.list" do
-  action :create_if_missing
-  content 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse'
-end
 
-execute 'update repositories' do
-  command 'apt -y update'
+case node[:platform]
+# CentOS detection and creation of repos
+  file "/etc/yum.repos.d/mongodb-org-3.4.repo" do
+    action :create_if_missing
+    content 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse'
+  end
+when "centos", "redhat"
+# default ubuntu code
+when "ubuntu"
+  file "/etc/apt/sources.list.d/mongodb-org-3.0.list" do
+    action :create_if_missing
+    content '[mongodb-org-3.4]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc'
+  end
 end
 
 Chef::Log.info "Running the mongodb installer"
