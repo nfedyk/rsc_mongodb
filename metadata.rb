@@ -4,7 +4,7 @@ maintainer_email 'premium@rightscale.com'
 license          'Apache 2.0'
 description      'Installs/Configures Mongo DB'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.0.1'
+version          '1.0.2'
 
 depends 'build-essential'
 depends 'mongodb'
@@ -100,11 +100,11 @@ attribute 'rsc_mongodb/restore_lineage_name',
   :category => 'MongoDB',
   :type => 'string',
   :recipes => ['rsc_mongodb::volume_default']
-    
+
 attribute 'rsc_mongodb/test_os',
   :display_name => 'test_os',
   :description => 'test_os',
   :required => 'optional',
   :category => 'MongoDB',
   :type => 'string',
-  :recipes => ['rsc_mongodb::test_os']    
+  :recipes => ['rsc_mongodb::test_os']
